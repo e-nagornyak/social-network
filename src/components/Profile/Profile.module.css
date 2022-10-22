@@ -1,9 +1,9 @@
 .profile {
     grid-area: m;
     position: relative;
-    padding: 5px;
+    padding: 15px;
 }
-.profile-bg {
+.bg {
     content: ' ';
     display: block;
     position: absolute;
@@ -19,7 +19,7 @@
 }
 
 
-.img-avatar {
+.avatar {
     height: 80px;
     width: 80px;
     margin: 5px;

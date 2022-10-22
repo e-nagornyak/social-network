@@ -1,16 +1,16 @@
 import React from 'react';
-import avatar from '../img/avatar.png'
-import '../css/profile.css'
+import avatar from '../../img/avatar.png'
+import s from './Profile.module.css'
 
 export const Profile = () => {
     return (
-        <main className={'profile'}>
+        <main className={s.profile}>
             <div>
-                <span className={'profile-bg'}></span>
+                <span className={s.bg}></span>
             </div>
             <div>
                 <img
-                    className={'img-avatar'}
+                    className={s.avatar}
                     src={avatar}
                     alt=""/>
             </div>
