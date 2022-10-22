@@ -1,11 +1,16 @@
 import React from 'react';
+import logo from '../img/logo-header.png'
+
+
+import '../css/header.css'
 
 export const Header = () => {
     return (
         <header className={'header'}>
-            <img
-                src="https://w7.pngwing.com/pngs/303/413/png-transparent-illustration-of-palm-tree-palm-trees-palm-leaf-plant-stem-palm-tree-thumbnail.png"
+            <img className={'logo-header'}
+                src={logo}
                 alt="logo"/>
+            <div className={'header-bg'}></div>
         </header>
     );
 };
