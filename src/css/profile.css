@@ -1,0 +1,26 @@
+.profile {
+    grid-area: m;
+    position: relative;
+    padding: 5px;
+}
+.profile-bg {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 17%;
+    z-index: -1;
+    background: #7a8790;
+    box-shadow: 0 2px 9px 2px rgb(4 2 0 / 67%);
+    border-left: 1px solid black;
+}
+
+
+.img-avatar {
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+}

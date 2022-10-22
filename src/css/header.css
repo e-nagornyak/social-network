@@ -1,0 +1,26 @@
+.logo-header {
+    width: 55px;
+    height: 55px;
+    margin-left: 8px;
+}
+
+.header {
+    grid-area: h;
+    position: relative;
+}
+
+.header-bg {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: -1;
+    background: #7a8790;
+    box-shadow: 2px 1px 18px -3px rgba(0,0,0,0.86);
+}
+
+
