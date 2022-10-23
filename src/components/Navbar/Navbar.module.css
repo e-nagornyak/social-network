@@ -8,7 +8,6 @@
 
 .nav:after {
     content: ' ';
-    display: block;
     position: absolute;
     left: 0;
     top: 0;
@@ -16,7 +15,7 @@
     height: 100%;
     opacity: 0.3;
     z-index: -1;
-    background-color: #017143;
+    background-color: #98B4D4;
     box-shadow: 2px 2px 18px -3px rgba(0, 0, 0, 0.86);
 }
 
