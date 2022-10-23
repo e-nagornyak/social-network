@@ -27,9 +27,14 @@
 
 }
 
-.link {
-    text-decoration: auto;
+/*NavLink*/
+.item a {
     color: black;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: red;
 }
 
 .item:first-child {
@@ -40,7 +45,6 @@
     margin-top: 15px;
     margin-bottom: 8px;
 }
-
 
 
 
