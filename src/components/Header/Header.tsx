@@ -8,7 +8,6 @@ export const Header = () => {
             <img className={s.logo}
                 src={logo}
                 alt="logo"/>
-            <div className={s.bg}></div>
         </header>
     );
 };

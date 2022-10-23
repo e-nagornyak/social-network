@@ -5,10 +5,7 @@ import s from './Profile.module.css'
 
 export const Profile = () => {
     return (
-        <main className={s.profile}>
-            <div>
-                <span className={s.bg}></span>
-            </div>
+        <main className={s.content}>
             <div>
                 <img
                     className={s.avatar}
