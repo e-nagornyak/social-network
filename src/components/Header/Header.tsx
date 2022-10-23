@@ -1,13 +1,32 @@
 import React from 'react';
-import logo from '../../img/logo-header.png'
+import logo from '../../img/logo-header.svg'
+import avatar from '../../img/avatar.png'
 import s from './Header.module.css'
 
 export const Header = () => {
     return (
         <header className={s.header}>
-            <img className={s.logo}
+            <div className={s.logo}>
+                <img className={s.logo}
                 src={logo}
                 alt="logo"/>
+                <h2 className={s.name_logo}>Social</h2>
+            </div>
+            <label>
+                <input type="text"/>
+                <button>P</button>
+            </label>
+            <div>
+                <a>Home </a>
+                <a>Home </a>
+                <a>Home </a>
+                <a>Home </a>
+                <img className={s.avatar} src={avatar} alt=""/>
+                <span>Name </span>
+                <span>Surname</span>
+            </div>
+
+
         </header>
     );
 };
