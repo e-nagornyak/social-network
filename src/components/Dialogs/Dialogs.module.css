@@ -1,6 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    color: white;
 }
 
 .items {
@@ -11,8 +12,9 @@
     color: red;
 }
 
-.item {
-
+.item a{
+    color: white;
+    text-decoration: none;
 }
 
 .messages {
