@@ -18,9 +18,9 @@ export const Header = () => {
             </label>
             <div>
                 <a>Home </a>
-                <a>Home </a>
-                <a>Home </a>
-                <a>Home </a>
+                <a>Friend </a>
+                <a>Notification </a>
+                <a>Message </a>
                 <img className={s.avatar} src={avatar} alt=""/>
                 <span>Name </span>
                 <span>Surname</span>
