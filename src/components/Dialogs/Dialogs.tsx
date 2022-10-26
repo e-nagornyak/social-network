@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 // Types
 type DialogItemType = {
-    link: string
+    id: number
     name: string
 }
 
@@ -18,8 +18,8 @@ type DialogsDataType = {
     name: string
 }
 
-const DialogItem = ({name, link}: DialogItemType) => {
-    let path = `/dialogs/${link}`
+const DialogItem = ({name, id}: DialogItemType) => {
+    let path = `/dialogs/${id}`
     return (
         <div className={`${s.item} ${s.active}`}>
             <NavLink to={path}>{name}</NavLink>
@@ -35,7 +35,7 @@ const Message = ({message}: MessageType) => {
 
 export const Dialogs = () => {
     // Data
-    let dialogsData: Array<DialogsDataType> = [
+    let dialogs: Array<DialogsDataType> = [
         {id: 1, name: 'Evhen'},
         {id: 2, name: 'Lisa'},
         {id: 3, name: 'Bogdan'},
@@ -44,21 +44,32 @@ export const Dialogs = () => {
         {id: 6, name: 'Sasha'}
     ]
 
-    let messagesData = [
+    let messages = [
         {id: 1, message: 'Hello'},
         {id: 2, message: 'How are you?'},
+        {id: 3, message: 'How'},
+        {id: 4, message: 'Yo!?'},
+        {id: 5, message: 'How are you?'},
+        {id: 6, message: 'Yes i am'},
 
     ]
 
+
+    let dialogsElements = dialogs.map(d => {
+        return <DialogItem name={d.name} id={d.id}/>
+    })
+    let messagesElements = messages.map(m => {
+        return <Message message={m.message}/>
+    })
 
     // JSX
     return (
         <div className={s.dialogs}>
             <div className={s.items}>
-                <DialogItem name={dialogsData[0].name} link='1'/>
+                {dialogsElements}
             </div>
             <div className={s.messages}>
-                <Message message={messagesData[0].message}/>
+                {messagesElements}
             </div>
         </div>
     );
