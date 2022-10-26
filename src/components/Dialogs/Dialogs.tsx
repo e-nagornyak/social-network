@@ -2,6 +2,8 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 
+
+// Types
 type DialogItemType = {
     link: string
     name: string
@@ -9,6 +11,11 @@ type DialogItemType = {
 
 type MessageType = {
     message: string
+}
+
+type DialogsDataType = {
+    id: number,
+    name: string
 }
 
 const DialogItem = ({name, link}: DialogItemType) => {
@@ -27,19 +34,31 @@ const Message = ({message}: MessageType) => {
 }
 
 export const Dialogs = () => {
+    // Data
+    let dialogsData: Array<DialogsDataType> = [
+        {id: 1, name: 'Evhen'},
+        {id: 2, name: 'Lisa'},
+        {id: 3, name: 'Bogdan'},
+        {id: 4, name: 'Sonia'},
+        {id: 5, name: 'Ivan'},
+        {id: 6, name: 'Sasha'}
+    ]
+
+    let messagesData = [
+        {id: 1, message: 'Hello'},
+        {id: 2, message: 'How are you?'},
+
+    ]
+
+
+    // JSX
     return (
         <div className={s.dialogs}>
             <div className={s.items}>
-                <DialogItem name={'Evhen'} link='1'/>
-                <DialogItem name={'Liza'} link='2'/>
-                <DialogItem name={'Bogdan'} link='3'/>
-                <DialogItem name={'Sonia'} link='4'/>
-
+                <DialogItem name={dialogsData[0].name} link='1'/>
             </div>
             <div className={s.messages}>
-                <Message message={'Hi'}/>
-                <Message message={'How is your day?'}/>
-                <Message message={'Yo!'}/>
+                <Message message={messagesData[0].message}/>
             </div>
         </div>
     );
