@@ -4,6 +4,7 @@
     text-align: left;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .nav:after {
@@ -13,9 +14,9 @@
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
+    opacity: 0.9;
     z-index: -1;
-    background-color: #98B4D4;
+    background-color: #0f0f0f;
     box-shadow: 2px 2px 18px -3px rgba(0, 0, 0, 0.86);
 }
 
@@ -28,7 +29,7 @@
 
 /*NavLink*/
 .item a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
