@@ -17,7 +17,7 @@ export const MyPosts = () => {
                     <textarea></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button>Add post and </button>
                 </div>
 
             </div>
