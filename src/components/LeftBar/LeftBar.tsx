@@ -1,10 +1,10 @@
 import React from 'react';
-import s from './Navbar.module.css';
+import s from './LeftBar.module.css';
 import {NavLink} from "react-router-dom";
 
-export const Navbar = () => {
+export const LeftBar = () => {
     return (
-        <nav className={s.nav}>
+        <nav className={s.leftBar}>
             <div className={s.item}>
                 <NavLink to={'/profile'} activeClassName={s.active}>Profile</NavLink>
             </div>

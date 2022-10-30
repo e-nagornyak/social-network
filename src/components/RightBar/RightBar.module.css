@@ -1,13 +1,15 @@
-.nav {
-    grid-area: n;
+.rightBar {
+    grid-area: r;
     position: relative;
     text-align: left;
     display: flex;
     flex-direction: column;
     color: white;
+    padding: 20px;
+    align-items: center;
 }
 
-.nav:after {
+.rightBar:after {
     content: ' ';
     position: absolute;
     left: 0;
@@ -21,29 +23,21 @@
 }
 
 .item {
-    margin: 4px 10px;
-    font-size: 16px;
-    font-weight: 500;
-
+    display: flex;
+    align-items: center;
 }
 
-/*NavLink*/
-.item a {
-    color: white;
+.name {
     text-decoration: none;
+    color: white;
+    font-size: 18px;
+    width: 150px;
 }
 
-.item a.active {
-    color: red;
-}
-
-.item:first-child {
-    margin-top: 8px;
-}
-
-.item:last-child {
-    margin-top: 15px;
-    margin-bottom: 8px;
+.avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
 }
 
 

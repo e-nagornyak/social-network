@@ -1,0 +1,49 @@
+.leftBar {
+    grid-area: l;
+    position: relative;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.leftBar:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    z-index: -1;
+    background-color: #0f0f0f;
+    box-shadow: 2px 2px 18px -3px rgba(0, 0, 0, 0.86);
+}
+
+.item {
+    margin: 4px 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/*NavLink*/
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: red;
+}
+
+.item:first-child {
+    margin-top: 8px;
+}
+
+.item:last-child {
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+
+
