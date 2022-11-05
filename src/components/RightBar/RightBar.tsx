@@ -8,7 +8,7 @@ export const RightBar = () => {
         <nav className={s.rightBar}>
             <div className={s.item}>
                 <img className={s.avatar} src={avatar} alt="avatar"/>
-                <a className={s.name} href="##">Name Surname</a>
+                <a className={s.name} href="#">Name Surname</a>
             </div>
         </nav>
     );
