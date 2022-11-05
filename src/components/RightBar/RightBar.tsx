@@ -1,9 +1,9 @@
 import React from 'react';
 import s from "../RightBar/RightBar.module.css";
 import avatar from "../../../src/img/avatar.png";
-import {NavLink} from "react-router-dom";
 
 export const RightBar = () => {
+    // JSX
     return (
         <nav className={s.rightBar}>
             <div className={s.item}>

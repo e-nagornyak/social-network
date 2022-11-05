@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Header.module.css'
-
 import home from '../../img/logo/home.svg'
 import search from '../../img/logo/search.svg'
 import notification from '../../img/logo/notification.svg'
@@ -10,6 +9,7 @@ import avatar from '../../img/avatar.png'
 import logo from '../../img/logo.png'
 
 export const Header = () => {
+    //JSX
     return (
         <header className={s.header}>
             <div className={s.logo}>
@@ -31,8 +31,6 @@ export const Header = () => {
                 <span>Name </span>
                 <span>Surname</span>
             </div>
-
-
         </header>
     );
 };

@@ -16,7 +16,7 @@ export type StateType = {
     profilePage: {
         posts: PostsType[]
     }
-    DialogsPage: {
+    dialogsPage: {
         messages: MessagesType[]
         dialogs: DialogsType[]
     }
@@ -31,7 +31,7 @@ export let state: StateType = {
             {id: 4, message: 'Hello!', likesCount: 5}
         ],
     },
-    DialogsPage: {
+    dialogsPage: {
         messages: [
             {id: 1, message: 'Hello'},
             {id: 2, message: 'How are you?'},
