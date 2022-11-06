@@ -1,18 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import {state} from './redux/state'
 import './index.css';
-import {App} from './App';
-import {addPost, state} from './redux/state'
+import {renderTree} from "./renderTree";
 
-import {BrowserRouter} from 'react-router-dom';
 
-addPost('Sraka')
-ReactDOM.render(
-    <BrowserRouter>
-              <App
-                  state={state}
-                  addPostCallback={addPost}
-              />
-           </BrowserRouter>,
-    document.getElementById('root')
-);
+renderTree(state)
+

@@ -18,6 +18,7 @@ export const MyPosts: React.FC<MyPostsPropsType> = ({posts, addPostCallback}) =>
     const addPost = () => {
         if (postMessageRef.current) {
             addPostCallback(postMessageRef.current.value)
+            postMessageRef.current.value = ''
         }
     }
 

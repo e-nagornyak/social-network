@@ -1,4 +1,5 @@
 import {v1} from "uuid";
+import {renderTree} from "../renderTree";
 
 export type PostsType = {
     id: string
@@ -55,5 +56,6 @@ export let state: StateType = {
 
 export const addPost = (postText: string) => {
     const newPost: PostsType = {id: v1(), message: postText, likesCount: 0}
-    state.profilePage.posts.push(newPost)
+    state.profilePage.posts.unshift(newPost)
+    renderTree(state)
 }
