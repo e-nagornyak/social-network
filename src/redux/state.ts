@@ -1,5 +1,4 @@
 import {v1} from "uuid";
-import {renderTree} from "../renderTree";
 
 export type PostsType = {
     id: string
@@ -26,6 +25,8 @@ export type StateType = {
     }
 }
 
+let renderTree = () => {}
+
 export let state: StateType = {
     profilePage: {
         posts: [
@@ -34,7 +35,7 @@ export let state: StateType = {
             {id: v1(), message: 'Hello!', likesCount: 0},
             {id: v1(), message: 'Hello!', likesCount: 5}
         ],
-        newPostText: ''
+        newPostText: '',
     },
     dialogsPage: {
         messages: [
@@ -64,10 +65,14 @@ export const addPost = () => {
     }
     state.profilePage.posts.unshift(newPost)
     state.profilePage.newPostText = ''
-    renderTree(state)
+    renderTree()
 }
 
 export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText
-    renderTree(state)
+    renderTree()
+}
+
+export const subscribe = (observer: () => void) => {
+    renderTree = observer
 }

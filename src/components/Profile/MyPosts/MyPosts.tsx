@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import {Post} from "./Post/Post";
 import s from './MyPosts.module.css'
 import {PostsType, updateNewPostText} from "../../../redux/state";
@@ -10,17 +10,22 @@ type MyPostsPropsType = {
     updateNewPostText: (newText: string) => void
 }
 
-export const MyPosts: React.FC<MyPostsPropsType> = ({posts, newPostText, addPostCallback, updateNewPostText}) => {
+export const MyPosts: React.FC<MyPostsPropsType> = (
+    {
+        posts,
+        newPostText,
+        addPostCallback,
+        updateNewPostText
+    }) => {
+
     // Map postsElements
     let postsElements = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     //
-    let postMessageRef = React.createRef<HTMLTextAreaElement>()
-
     const addPost = () => addPostCallback()
-    const onPostChange = () => {
-        if (postMessageRef.current) {
-            updateNewPostText(postMessageRef.current.value)
+    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        if (e.currentTarget) {
+            updateNewPostText(e.currentTarget.value)
         }
     }
 
@@ -31,7 +36,6 @@ export const MyPosts: React.FC<MyPostsPropsType> = ({posts, newPostText, addPost
             <div>
                 <div>
                     <textarea
-                        ref={postMessageRef}
                         value={newPostText}
                         onChange={onPostChange}
                     />
