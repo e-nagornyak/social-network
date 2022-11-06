@@ -11,7 +11,7 @@ type DialogsPropsType = {
     }
 }
 
-export const Dialogs = (props: DialogsPropsType) => {
+export const Dialogs: React.FC<DialogsPropsType> = (props) => {
     const {dialogs, messages} = props.data
 
     let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
@@ -25,8 +25,10 @@ export const Dialogs = (props: DialogsPropsType) => {
             </div>
             <div className={s.messages}>
                 {messagesElements}
-                <textarea></textarea>
-                <button>Send</button>
+                <div className={s.send_wrapper}>
+                    <textarea></textarea>
+                    <button>Send</button>
+                </div>
             </div>
         </div>
     );

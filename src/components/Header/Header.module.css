@@ -6,19 +6,7 @@
     justify-content: space-between;
     padding: 10px;
     color: white;
-}
-
-.header:after {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.9;
-    z-index: -1;
-    background-color: #0f0f0f;
-    box-shadow: 2px 2px 18px -3px rgba(0, 0, 0, 0.86);
+    background-color: #1a1a1a;
 }
 
 .logo {
@@ -30,6 +18,7 @@
     width: 70px;
     height: 50px;
     /*filter: drop-shadow(1px 1px 4px #7a8790);*/
+
 }
 
 .name_logo {
@@ -48,7 +37,7 @@ label img {
 
 label input {
     width: 500px;
-    height: 30px;
+    height: 32px;
     opacity: 0.7;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 100%);
@@ -63,7 +52,6 @@ label input {
 .nav a {
     margin-right: 55px;
     width: 15px;
-    height: 15px;
 }
 
 .nav span {
@@ -74,5 +62,9 @@ label input {
     width: 40px;
     height: 40px;
     margin-right: 5px;
+}
+
+.icons{
+    width: 20px;
 }
 

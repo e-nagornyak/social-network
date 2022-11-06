@@ -23,10 +23,10 @@ export const Header = () => {
                 <img src={search} alt=""/>
             </label>
             <div className={s.nav}>
-                <a><img src={home} alt="home icon"/> </a>
-                <a><img src={users} alt="users icon"/> </a>
-                <a><img src={notification} alt="notification icon"/> </a>
-                <a><img src={messages} alt="messages icon"/> </a>
+                <a><img className={s.icons} src={home} alt="home icon"/> </a>
+                <a><img className={s.icons} src={users} alt="users icon"/> </a>
+                <a><img className={s.icons} src={notification} alt="notification icon"/> </a>
+                <a><img className={s.icons} src={messages} alt="messages icon"/> </a>
                 <img className={s.avatar} src={avatar} alt=""/>
                 <span>Name </span>
                 <span>Surname</span>

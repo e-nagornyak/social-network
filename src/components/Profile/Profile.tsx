@@ -8,16 +8,17 @@ type ProfilePropsType = {
     data: {
         posts: PostsType[]
     }
+    addPostCallback: (postText: string) => void
 
 }
 
-export const Profile = (props: ProfilePropsType) => {
-    const {posts} = props.data
+export const Profile: React.FC<ProfilePropsType>= ({data, addPostCallback} ) => {
+    const {posts} = data
 
     return (
         <main className={s.content}>
             <ProfileInfo/>
-            <MyPosts posts={posts}/>
+            <MyPosts posts={posts} addPostCallback={addPostCallback}/>
         </main>
     );
 };

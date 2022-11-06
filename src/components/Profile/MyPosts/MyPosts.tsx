@@ -5,9 +5,10 @@ import {PostsType} from "../../../redux/state";
 
 type MyPostsPropsType = {
     posts: PostsType[]
+    addPostCallback: (postText: string) => void
 }
 
-export const MyPosts: React.FC<MyPostsPropsType> = ({posts}) => {
+export const MyPosts: React.FC<MyPostsPropsType> = ({posts, addPostCallback}) => {
     // Map postsElements
     let postsElements = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
@@ -15,8 +16,9 @@ export const MyPosts: React.FC<MyPostsPropsType> = ({posts}) => {
     let postMessageRef = React.createRef<HTMLTextAreaElement>()
 
     const addPost = () => {
-        let text = postMessageRef.current?.value
-        alert(text)
+        if (postMessageRef.current) {
+            addPostCallback(postMessageRef.current.value)
+        }
     }
 
     // JSX
@@ -35,5 +37,5 @@ export const MyPosts: React.FC<MyPostsPropsType> = ({posts}) => {
                 {postsElements}
             </div>
         </div>
-    );
-};
+    )
+}

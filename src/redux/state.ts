@@ -1,14 +1,16 @@
+import {v1} from "uuid";
+
 export type PostsType = {
-    id: number
+    id: string
     message: string
     likesCount: number
 }
 export type DialogsType = {
-    id: number
+    id: string
     name: string
 }
 export type MessagesType = {
-    id: number
+    id: string
     message: string
 }
 
@@ -25,30 +27,33 @@ export type StateType = {
 export let state: StateType = {
     profilePage: {
         posts: [
-            {id: 1, message: 'How are you?', likesCount: 23},
-            {id: 2, message: 'Hello!', likesCount: 12},
-            {id: 3, message: 'Hello!', likesCount: 0},
-            {id: 4, message: 'Hello!', likesCount: 5}
+            {id: v1(), message: 'How are you?', likesCount: 23},
+            {id: v1(), message: 'Hello!', likesCount: 12},
+            {id: v1(), message: 'Hello!', likesCount: 0},
+            {id: v1(), message: 'Hello!', likesCount: 5}
         ],
     },
     dialogsPage: {
         messages: [
-            {id: 1, message: 'Hello'},
-            {id: 2, message: 'How are you?'},
-            {id: 3, message: 'How'},
-            {id: 4, message: 'Yo!?'},
-            {id: 5, message: 'How are you?'},
-            {id: 6, message: 'Yes i am'}
+            {id: v1(), message: 'Hello'},
+            {id: v1(), message: 'How are you?'},
+            {id: v1(), message: 'How'},
+            {id: v1(), message: 'Yo!?'},
+            {id: v1(), message: 'How are you?'},
+            {id: v1(), message: 'Yes i am'}
         ],
         dialogs: [
-            {id: 1, name: 'Evhen'},
-            {id: 2, name: 'Lisa'},
-            {id: 3, name: 'Bogdan'},
-            {id: 4, name: 'Sonia'},
-            {id: 5, name: 'Ivan'},
-            {id: 6, name: 'Sasha'}
+            {id: v1(), name: 'Evhen'},
+            {id: v1(), name: 'Lisa'},
+            {id: v1(), name: 'Bogdan'},
+            {id: v1(), name: 'Sonia'},
+            {id: v1(), name: 'Ivan'},
+            {id: v1(), name: 'Sasha'}
         ],
     }
+}
 
-
+export const addPost = (postText: string) => {
+    const newPost: PostsType = {id: v1(), message: postText, likesCount: 0}
+    state.profilePage.posts.push(newPost)
 }
