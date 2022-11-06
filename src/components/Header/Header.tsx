@@ -16,7 +16,7 @@ export const Header = () => {
                 <img className={s.logo}
                      src={logo}
                      alt="logo"/>
-                <h2 className={s.name_logo}>Letim</h2>
+                <h2 className={s.name_logo}>Roket</h2>
             </div>
             <label>
                 <input type="text"/>

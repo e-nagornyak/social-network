@@ -8,13 +8,15 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {addPost, StateType} from "./redux/state";
+import {StateType, updateNewPostText} from "./redux/state";
 
 import s from './App.module.css';
 
 type AppPropsType = {
     state: StateType
-    addPostCallback: (postText: string) => void
+    addPostCallback: () => void
+    updateNewPostText: (newText: string) => void
+
 }
 
 export const App: React.FC<AppPropsType> = ({state, addPostCallback}) => {
@@ -30,7 +32,9 @@ export const App: React.FC<AppPropsType> = ({state, addPostCallback}) => {
             <div className={s.content}>
                 <Route path={'/profile'} render={() => <Profile
                     data={profilePage}
-                    addPostCallback={addPostCallback}/>}/>
+                    addPostCallback={addPostCallback}
+                    updateNewPostText={updateNewPostText}
+                />}/>
                 <Route path={'/dialogs'} render={() => <Dialogs
                     data={dialogsPage}/>}/>
 
