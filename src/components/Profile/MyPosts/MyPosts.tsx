@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import {Post} from "./Post/Post";
 import s from './MyPosts.module.css'
-import {PostsType, updateNewPostText} from "../../../redux/state";
+import {PostsType} from "../../../redux/state";
 
 type MyPostsPropsType = {
     posts: PostsType[]
@@ -19,7 +19,7 @@ export const MyPosts: React.FC<MyPostsPropsType> = (
     }) => {
 
     // Map postsElements
-    let postsElements = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let postsElements = posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
 
     //
     const addPost = () => addPostCallback()

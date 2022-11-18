@@ -8,19 +8,16 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {StateType, updateNewPostText} from "./redux/state";
+import {StoreType} from "./redux/state";
 
 import s from './App.module.css';
 
 type AppPropsType = {
-    state: StateType
-    addPostCallback: () => void
-    updateNewPostText: (newText: string) => void
-
+    store: StoreType
 }
 
-export const App: React.FC<AppPropsType> = ({state, addPostCallback}) => {
-    const {dialogsPage, profilePage} = state
+export const App: React.FC<AppPropsType> = (props) => {
+    const state = props.store.getState()
 
 
     //JSX
@@ -31,12 +28,14 @@ export const App: React.FC<AppPropsType> = ({state, addPostCallback}) => {
             <RightBar/>
             <div className={s.content}>
                 <Route path={'/profile'} render={() => <Profile
-                    data={profilePage}
-                    addPostCallback={addPostCallback}
-                    updateNewPostText={updateNewPostText}
+                    data={state.profilePage}
+                    addPostCallback={props.store.addPost.bind(props.store)}
+                    updateNewPostText={props.store.updateNewPostText.bind(props.store)}
                 />}/>
                 <Route path={'/dialogs'} render={() => <Dialogs
-                    data={dialogsPage}/>}/>
+                    data={state.dialogsPage}/>}/>
+
+
 
                 <Route path={'/news'} render={() => <News/>}/>
                 <Route path={'/music'} render={() => <Music/>}/>

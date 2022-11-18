@@ -2,7 +2,7 @@ import React from 'react';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import s from './Profile.module.css'
-import {PostsType, updateNewPostText} from "../../redux/state";
+import {PostsType} from "../../redux/state";
 
 type ProfilePropsType = {
     data: {
@@ -14,7 +14,12 @@ type ProfilePropsType = {
 
 }
 
-export const Profile: React.FC<ProfilePropsType>= ({data, addPostCallback, updateNewPostText} ) => {
+export const Profile: React.FC<ProfilePropsType> = (
+    {
+        data,
+        addPostCallback,
+        updateNewPostText
+    }) => {
     const {posts, newPostText} = data
 
     return (
