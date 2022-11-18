@@ -13,7 +13,6 @@ export type MessagesType = {
     id: string
     message: string
 }
-
 export type StateType = {
     profilePage: {
         posts: PostsType[]
@@ -34,17 +33,18 @@ export type StoreType = {
     dispatch: (action: ActionsType) => void
 }
 
-// Dispatch
-type AddPostActionType = {
-    type: 'ADD-POST'
-}
-type UpdateNewPostTextType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
-}
-
+// DispatchType
 export type ActionsType = AddPostActionType | UpdateNewPostTextType
 
+//ActionCreatorTypes
+type AddPostActionType = ReturnType<typeof addPostAC> // автоматично оприділяє тип
+type UpdateNewPostTextType = ReturnType<typeof UpdatePostTextAC>
+
+// Action Creator
+export const addPostAC = () => ({type: "ADD-POST"}) as const
+export const UpdatePostTextAC = (newText: string) => ({type: "UPDATE-NEW-POST-TEXT", newText}) as const // як константа
+
+// Store
 export const store: StoreType = {
     _state: {
         profilePage: {
@@ -85,7 +85,7 @@ export const store: StoreType = {
         return this._state
     },
 
-    dispatch(action) { // action - об'єкт, який описує що потрібно зробити { type: 'ADD-POST' - як варіант}
+    dispatch(action) { // action - об'єкт, в якого обов'язково type { type: 'ADD-POST' - як варіант}
         if (action.type === 'ADD-POST') {
             const newPost: PostsType = {
                 id: v1(),
