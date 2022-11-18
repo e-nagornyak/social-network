@@ -32,7 +32,9 @@ export const App: React.FC<AppPropsType> = (props) => {
                     dispatch={props.store.dispatch.bind(props.store)}
                 />}/>
                 <Route path={'/dialogs'} render={() => <Dialogs
-                    data={state.dialogsPage}/>}/>
+                    data={state.dialogsPage}
+                    dispatch={props.store.dispatch.bind(props.store)}
+                />}/>
 
 
 

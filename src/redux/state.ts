@@ -21,6 +21,7 @@ export type StateType = {
     dialogsPage: {
         messages: MessagesType[]
         dialogs: DialogsType[]
+        newMessageText: string
     }
 }
 export type StoreType = {
@@ -34,7 +35,7 @@ export type StoreType = {
 }
 
 // DispatchType
-export type ActionsType = AddPostActionType | UpdateNewPostTextType
+export type ActionsType = AddPostActionType | UpdateNewPostTextType | any
 
 //ActionCreatorTypes
 type AddPostActionType = ReturnType<typeof addPostAC> // автоматично оприділяє тип
@@ -44,6 +45,8 @@ type UpdateNewPostTextType = ReturnType<typeof UpdatePostTextAC>
 export const addPostAC = () => ({type: "ADD-POST"}) as const
 export const UpdatePostTextAC = (newText: string) => ({type: "UPDATE-NEW-POST-TEXT", newText}) as const // як константа
 
+export const sendMessageAC = () => ({type: "SEND-MESSAGE"}) as const
+export const UpdateMessageTextAC = (newText: string) => ({type: "UPDATE-NEW-MESSAGE-TEXT", newText}) as const // як константа
 // Store
 export const store: StoreType = {
     _state: {
@@ -73,6 +76,7 @@ export const store: StoreType = {
                 {id: v1(), name: 'Ivan'},
                 {id: v1(), name: 'Sasha'}
             ],
+            newMessageText: '',
         }
     },
     _callSubscriber() {
@@ -97,6 +101,17 @@ export const store: StoreType = {
             this._callSubscriber()
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText
+            this._callSubscriber()
+        } else if (action.type === 'SEND-MESSAGE') {
+            const newMessage: MessagesType = {
+                id: v1(),
+                message: this._state.dialogsPage.newMessageText
+            }
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = ''
+            this._callSubscriber()
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newText
             this._callSubscriber()
         }
     },
