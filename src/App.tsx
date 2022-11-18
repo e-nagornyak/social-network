@@ -29,8 +29,7 @@ export const App: React.FC<AppPropsType> = (props) => {
             <div className={s.content}>
                 <Route path={'/profile'} render={() => <Profile
                     data={state.profilePage}
-                    addPostCallback={props.store.addPost.bind(props.store)}
-                    updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                    dispatch={props.store.dispatch.bind(props.store)}
                 />}/>
                 <Route path={'/dialogs'} render={() => <Dialogs
                     data={state.dialogsPage}/>}/>
