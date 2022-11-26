@@ -1,4 +1,6 @@
 import {v1} from "uuid";
+import {profileReducer} from "./reducers/profileReducer";
+import {dialogsReducer} from "./reducers/dialogsReducer";
 
 export type PostsType = {
     id: string
@@ -13,40 +15,28 @@ export type MessagesType = {
     id: string
     message: string
 }
+export type ProfilePageType = {
+    posts: PostsType[]
+    newPostText: string
+}
+export type DialogsPageType = {
+    messages: MessagesType[]
+    dialogs: DialogsType[]
+    newMessageText: string
+}
 export type StateType = {
-    profilePage: {
-        posts: PostsType[]
-        newPostText: string
-    }
-    dialogsPage: {
-        messages: MessagesType[]
-        dialogs: DialogsType[]
-        newMessageText: string
-    }
+    profilePage: ProfilePageType
+    dialogsPage: DialogsPageType
 }
 export type StoreType = {
     _state: StateType
     _callSubscriber: () => void
     subscribe: (observer: () => void) => void
     getState: () => StateType
-    // addPost: () => void
-    // updateNewPostText: (newText: string) => void
-    dispatch: (action: ActionsType) => void
+    dispatch: (action: any) => void
 }
 
-// DispatchType
-export type ActionsType = AddPostActionType | UpdateNewPostTextType | any
 
-//ActionCreatorTypes
-type AddPostActionType = ReturnType<typeof addPostAC> // автоматично оприділяє тип
-type UpdateNewPostTextType = ReturnType<typeof UpdatePostTextAC>
-
-// Action Creator
-export const addPostAC = () => ({type: "ADD-POST"}) as const
-export const UpdatePostTextAC = (newText: string) => ({type: "UPDATE-NEW-POST-TEXT", newText}) as const // як константа
-
-export const sendMessageAC = () => ({type: "SEND-MESSAGE"}) as const
-export const UpdateMessageTextAC = (newText: string) => ({type: "UPDATE-NEW-MESSAGE-TEXT", newText}) as const // як константа
 // Store
 export const store: StoreType = {
     _state: {
@@ -89,31 +79,10 @@ export const store: StoreType = {
         return this._state
     },
 
-    dispatch(action) { // action - об'єкт, в якого обов'язково type { type: 'ADD-POST' - як варіант}
-        if (action.type === 'ADD-POST') {
-            const newPost: PostsType = {
-                id: v1(),
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            }
-            this._state.profilePage.posts.unshift(newPost)
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber()
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText
-            this._callSubscriber()
-        } else if (action.type === 'SEND-MESSAGE') {
-            const newMessage: MessagesType = {
-                id: v1(),
-                message: this._state.dialogsPage.newMessageText
-            }
-            this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessageText = ''
-            this._callSubscriber()
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.dialogsPage.newMessageText = action.newText
-            this._callSubscriber()
-        }
+    dispatch(action) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._callSubscriber()
     },
 }
 

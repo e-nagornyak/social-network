@@ -2,14 +2,15 @@ import React from 'react';
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import s from './Profile.module.css'
-import {ActionsType, PostsType} from "../../redux/state";
+import {PostsType} from "../../redux/state";
+import {ProfileActionType} from "../../redux/reducers/profileReducer";
 
 type ProfilePropsType = {
     data: {
         posts: PostsType[]
         newPostText: string
     }
-    dispatch: (action: ActionsType) => void
+    dispatch: (action: ProfileActionType) => void
 }
 
 export const Profile: React.FC<ProfilePropsType> = (
