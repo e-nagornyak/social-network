@@ -26,15 +26,11 @@ export const App: React.FC<AppPropsType> = (props) => {
             <LeftBar/>
             <RightBar/>
             <div className={s.content}>
-                <Route path={'/profile'} render={() => <Profile
-                    data={state.profilePage}
-                    dispatch={props.store.dispatch.bind(props.store)}
-                />}/>
+                <Route path={'/profile'} render={() => <Profile store={props.store}/>}/>
                 <Route path={'/dialogs'} render={() => <Dialogs
                     data={state.dialogsPage}
                     dispatch={props.store.dispatch.bind(props.store)}
                 />}/>
-
 
 
                 <Route path={'/news'} render={() => <News/>}/>
