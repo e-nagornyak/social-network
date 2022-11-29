@@ -2,43 +2,46 @@ import React, {ChangeEvent} from 'react';
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsType, MessagesType,} from "../../redux/store";
-import {sendMessageAC, updateMessageTextAC, DialogsActionType} from "../../redux/reducers/dialogsReducer";
+import {DialogsType, MessagesType} from "../../redux/store";
 
 type DialogsPropsType = {
-    data: {
-        dialogs: DialogsType[]
-        messages: MessagesType[]
-        newMessageText: string
-    }
-    dispatch: (action: DialogsActionType) => void
+    dialogsElements: any
+    messagesElements: any
+    newMessageText: string
+    sendMessage: () => void
+    onMessageChange: (text: string) => void
 }
 
-export const Dialogs: React.FC<DialogsPropsType> = (props) => {
-    const {dialogs, messages, newMessageText} = props.data
+export const Dialogs: React.FC<DialogsPropsType> = (
+    {
+        dialogsElements,
+        messagesElements,
+        newMessageText,
+        sendMessage,
+        onMessageChange
+    }) => {
 
-    let dialogsElements = dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
-    let messagesElements = messages.map(m => <Message message={m.message}/>)
+    let dialogs = dialogsElements.map((d: DialogsType) => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    let messages = messagesElements.map((m: MessagesType) => <Message key={m.id} message={m.message}/>)
 
-    const sendMessage = () => props.dispatch(sendMessageAC())
-    const onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => props.dispatch(updateMessageTextAC(e.currentTarget.value))
-
+    const sendMessageHandler = () => sendMessage()
+    const onMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => onMessageChange(e.currentTarget.value)
 
     // JSX
     return (
         <div className={s.dialogs}>
             <div className={s.items}>
-                {dialogsElements}
+                {dialogs}
             </div>
             <div className={s.messages}>
-                {messagesElements}
+                {messages}
                 <div className={s.send_wrapper}>
                     <textarea
                         value={newMessageText}
                         placeholder={'Enter your message'}
-                        onChange={onMessageChange}>
+                        onChange={onMessageChangeHandler}>
                     </textarea>
-                    <button onClick={sendMessage}>Send</button>
+                    <button onClick={sendMessageHandler}>Send</button>
                 </div>
             </div>
         </div>

@@ -16,7 +16,6 @@ export const MyPosts: React.FC<MyPostsPropsType> = (
         updateNewPostText,
         addPost
     }) => {
-
     // Map postsElements
     let postsElements = posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
 

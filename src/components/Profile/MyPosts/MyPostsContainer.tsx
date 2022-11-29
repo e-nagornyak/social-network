@@ -10,13 +10,12 @@ export const MyPostsContainer: React.FC<MyPostsContainerPropsType> = ({store}) =
     const state = store.getState()
     const addPost = () => store.dispatch(addPostAC())
     const onPostChange = (text: string) => store.dispatch(updatePostTextAC(text))
-
     // JSX
     return <MyPosts
-        posts={state.posts}
+        posts={state.profilePage.posts}
         addPost={addPost}
         updateNewPostText={onPostChange}
-        newPostText={state.newPostText}
+        newPostText={state.profilePage.newPostText}
     />
 
 }

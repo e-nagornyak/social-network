@@ -9,7 +9,7 @@ const renderTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
-                <App store={}/>
+                <App store={store}/>
             </Provider>
         </BrowserRouter>,
         document.getElementById('root')
