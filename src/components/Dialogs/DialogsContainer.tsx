@@ -18,8 +18,6 @@ export const DialogsContainer: React.FC<DialogsContainerPropsType> = ({store}) =
     return <Dialogs
         onMessageChange={onMessageChange}
         sendMessage={sendMessage}
-        dialogsElements={state.dialogsPage.dialogs}
-        messagesElements={state.dialogsPage.messages}
-        newMessageText={state.dialogsPage.newMessageText}
+        dialogsPage={state.dialogsPage}
     />
 };
