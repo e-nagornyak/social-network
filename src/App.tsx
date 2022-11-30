@@ -7,16 +7,12 @@ import {Profile} from "./components/Profile/Profile";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-
-import s from './App.module.css';
-import {Store} from "redux";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import s from './App.module.css';
 
-type AppPropsType = {
-    store: Store
-}
 
-export const App: React.FC<AppPropsType> = (props) => {
+
+export const App = () => {
     //JSX
     return (
         <div className={s.wrapper}>
@@ -24,8 +20,8 @@ export const App: React.FC<AppPropsType> = (props) => {
             <LeftBar/>
             <RightBar/>
             <div className={s.content}>
-                <Route path={'/profile'} render={() => <Profile store={props.store}/>}/>
-                <Route path={'/dialogs'} render={() => <DialogsContainer store={props.store}/>}/>
+                <Route path={'/profile'} render={() => <Profile/>}/>
+                <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
 
 
                 <Route path={'/news'} render={() => <News/>}/>
