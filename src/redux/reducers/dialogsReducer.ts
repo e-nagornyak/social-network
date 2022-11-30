@@ -22,17 +22,18 @@ const initialState = {
 }
 
 export type DialogsActionType = sendMessageACType | updateMessageTextACType
-export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionType) => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionType): DialogsPageType => {
     switch (action.type) {
         case "SEND-MESSAGE": {
             const newMessage: MessagesType = {id: v1(), message: state.newMessageText}
-            state.messages.push(newMessage)
-            state.newMessageText = ''
-            return state
+            return {
+                ...state,
+                messages: [...state.messages, newMessage],
+                newMessageText: ''
+            }
         }
         case "UPDATE-NEW-MESSAGE-TEXT": {
-            state.newMessageText = action.newText
-            return state
+            return {...state, newMessageText: action.newText}
         }
         default: {
             return state
