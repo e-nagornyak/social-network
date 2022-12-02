@@ -1,5 +1,15 @@
 import {v1} from "uuid";
-import {PostsType, ProfilePageType} from "../store";
+
+export type PostType = {
+    id: string
+    message: string
+    likesCount: number
+}
+
+type ProfileStateType = {
+    posts: PostType[]
+    newPostText: string
+}
 
 const initialState = {
     posts: [
@@ -11,27 +21,27 @@ const initialState = {
     newPostText: '',
 }
 
-export type ProfileActionType = AddPostActionType | UpdateNewPostTextType
-export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionType): ProfilePageType => {
+export type ProfileActionType = addPostACType | updateNewPostTextACType
+export const profileReducer = (state: ProfileStateType = initialState, action: ProfileActionType): ProfileStateType => {
     switch (action.type) {
         case 'ADD-POST': {
-            const newPost: PostsType = {id: v1(), message: state.newPostText, likesCount: 0}
+            const newPost: PostType = {id: v1(), message: state.newPostText, likesCount: 0}
             return {
                 ...state,
-                posts: [newPost,...state.posts],
+                posts: [newPost, ...state.posts],
                 newPostText: ''
             }
         }
         case 'UPDATE-NEW-POST-TEXT': {
-            return {...state, newPostText: action.newText}
+            return {...state, newPostText: action.payload.newText}
         }
         default:
             return state
     }
 }
-type AddPostActionType = ReturnType<typeof addPostAC>
+type addPostACType = ReturnType<typeof addPostAC>
 export const addPostAC = () => ({type: "ADD-POST"}) as const
 
-type UpdateNewPostTextType = ReturnType<typeof updatePostTextAC>
-export const updatePostTextAC = (newText: string) => ({type: "UPDATE-NEW-POST-TEXT", newText}) as const // як константа
+type updateNewPostTextACType = ReturnType<typeof updatePostTextAC>
+export const updatePostTextAC = (newText: string) => ({type: "UPDATE-NEW-POST-TEXT", payload: {newText}}) as const
 
