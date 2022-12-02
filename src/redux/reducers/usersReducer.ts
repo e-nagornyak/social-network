@@ -16,32 +16,7 @@ export type UsersStateType = {
 }
 
 const initialState = {
-    users: [
-        {
-            id: v1(),
-            photoUrl: '',
-            followed: false,
-            fullName: 'Evhen',
-            status: 'I am a boss',
-            location: {city: 'Kiev', country: 'Ukraine'}
-        },
-        {
-            id: v1(),
-            photoUrl: '',
-            followed: true,
-            fullName: 'Lisa',
-            status: 'I am a boss',
-            location: {city: 'Kiev', country: 'Ukraine'}
-        },
-        {
-            id: v1(),
-            photoUrl: '',
-            followed: false,
-            fullName: 'Bogdan',
-            status: 'I am a boss',
-            location: {city: 'Lviv', country: 'Ukraine'}
-        },
-    ]
+    users: []
 }
 
 export type UsersActionType = followACType | unfollowACType | setUsersACType
