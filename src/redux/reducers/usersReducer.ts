@@ -1,10 +1,13 @@
-import {v1} from "uuid";
+
 
 export type UserType = {
     id: string
-    photoUrl: string
+    photos: {
+        small: string
+        large: string
+    }
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: {
         city: string

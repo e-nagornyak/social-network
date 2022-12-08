@@ -5,11 +5,11 @@ type MusicType = {
 
 }
 
-export const Music = () => {
+export const Music = (props: MusicType) => {
     return (
-        <div>
-            <h1>It`s music component</h1>
-        </div>
+            <h1 >It`s music component</h1>
     );
 };
+
+
 
