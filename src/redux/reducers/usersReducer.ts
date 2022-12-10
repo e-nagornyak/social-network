@@ -1,5 +1,3 @@
-
-
 export type UserType = {
     id: string
     photos: {
@@ -16,13 +14,25 @@ export type UserType = {
 }
 export type UsersStateType = {
     users: UserType[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 const initialState = {
-    users: []
+    users: [],
+    pageSize: 3,
+    totalUsersCount: 10,
+    currentPage: 1
 }
 
-export type UsersActionType = followACType | unfollowACType | setUsersACType
+export type UsersActionType =
+    followACType
+    | unfollowACType
+    | setUsersACType
+    | setCurrentPageACType
+    | setTotalUsersCountACType
+
 export const usersReducer = (state: UsersStateType = initialState, action: UsersActionType): UsersStateType => {
     switch (action.type) {
         case 'FOLLOW': {
@@ -38,10 +48,13 @@ export const usersReducer = (state: UsersStateType = initialState, action: Users
             }
         }
         case "SET-USERS": {
-            return {
-                ...state,
-                users: [...state.users, ...action.payload.users]
-            }
+            return {...state, users: action.payload.users}
+        }
+        case "SET-CURRENT-PAGE": {
+            return {...state, currentPage: action.payload.pageNumber}
+        }
+        case "SET-TOTAL-USERS-COUNT": {
+            return {...state, totalUsersCount: action.payload.totalCount}
         }
         default:
             return state
@@ -56,3 +69,8 @@ export const unfollowAC = (userId: string) => ({type: "UNFOLLOW", payload: {user
 type setUsersACType = ReturnType<typeof setUsersAC>
 export const setUsersAC = (users: UserType[]) => ({type: "SET-USERS", payload: {users}}) as const
 
+type setCurrentPageACType = ReturnType<typeof setCurrentPageAC>
+export const setCurrentPageAC = (pageNumber: number) => ({type: "SET-CURRENT-PAGE", payload: {pageNumber}}) as const
+
+type setTotalUsersCountACType = ReturnType<typeof setTotalUsersCountAC>
+export const setTotalUsersCountAC = (totalCount: number) => ({type: "SET-TOTAL-USERS-COUNT", payload: {totalCount}}) as const

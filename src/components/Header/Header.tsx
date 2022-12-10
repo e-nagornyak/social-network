@@ -14,9 +14,9 @@ export const Header = () => {
         <header className={s.header}>
             <div className={s.logo}>
                 <img className={s.logo}
-                     src={logo}
+                     src={'https://cdn-icons-png.flaticon.com/512/9143/9143061.png'}
                      alt="logo"/>
-                <h2 className={s.name_logo}>Social</h2>
+                <h2 className={s.name_logo}>Logo</h2>
             </div>
             <label>
                 <input type="text"/>

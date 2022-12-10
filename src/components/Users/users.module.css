@@ -3,7 +3,13 @@
     padding: 10px;
 }
 
-.avatar{
+
+.selectedPage {
+    font-weight: bold;
+    color: red;
+}
+
+.avatar {
     width: 100px;
     height: 100px;
 }
