@@ -7,7 +7,7 @@ type SettingsType = {
 
 export const Settings = () => {
     return (
-        <div>
+        <div className={s.content}>
             <h1>It`s settings component</h1>
         </div>
     );
