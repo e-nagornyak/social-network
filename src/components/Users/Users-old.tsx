@@ -6,7 +6,7 @@ import userDefault from '../../assets/img/default_avatar.png'
 
 export const UsersOld: React.FC<UsersPropsType> = (props) => {
     const getUsers = () => {
-        if (props.usersPage.users.length === 0) {
+        if (props.users.length === 0) {
             axios.get("https://social-network.samuraijs.com/api/1.0/users")
                 .then(response => {
                     props.setUsers(response.data.items)
@@ -18,7 +18,7 @@ export const UsersOld: React.FC<UsersPropsType> = (props) => {
     return (
         <div className={s.content}>
             <button onClick={getUsers}>Get Users</button>
-            {props.usersPage.users.map(u => {
+            {props.users.map(u => {
 
                 const FollowHandler = () => props.follow(u.id)
                 const UnfollowHandler = () => props.unfollow(u.id)
