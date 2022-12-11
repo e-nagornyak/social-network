@@ -1,16 +1,18 @@
+import React from "react";
 import {Dispatch} from "redux";
 import {connect} from "react-redux";
-import {Users} from "./Users";
+import {AppStateType} from "../../redux/redux-store";
+import Users from "./Users";
 import {
     followAC,
-    setCurrentPageAC, setTotalUsersCountAC,
+    setCurrentPageAC,
+    setTotalUsersCountAC,
     setUsersAC,
     unfollowAC,
     UsersStateType,
     UserType
 } from "../../redux/reducers/usersReducer";
-import {AppStateType} from "../../redux/redux-store";
-import UsersC from "./UsersC";
+import axios from "axios";
 
 export type MapStatePropsType = {
     usersPage: UsersStateType
@@ -57,4 +59,36 @@ const mapDispatchToProps = (dispatch: Dispatch): mapDispatchPropsType => {
     }
 }
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersC);
+
+class UsersAPIComponent extends React.Component<UsersPropsType> {
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+                // this.props.setTotalUsersCount(response.data.totalCount)
+            })
+    }
+
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            })
+    }
+
+    render() {
+        return <Users
+            totalUsersCount={this.props.totalUsersCount}
+            pageSize={this.props.pageSize}
+            currentPage={this.props.currentPage}
+            onPageChanged={this.onPageChanged}
+            follow={this.props.follow}
+            unfollow={this.props.unfollow}
+            users={this.props.usersPage.users}
+        />
+    }
+}
+
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+

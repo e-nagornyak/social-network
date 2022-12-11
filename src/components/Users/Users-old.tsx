@@ -1,28 +1,28 @@
 import React from 'react';
-import s from "./users.module.css";
-import userDefault from "../../assets/img/default_avatar.png";
+import {UsersPropsType} from "./UsersContainer";
+import s from './users.module.css'
+import axios from "axios";
+import userDefault from '../../assets/img/default_avatar.png'
 
-const Users = (props: any) => {
-    const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-    const pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
+export const UsersOld: React.FC<UsersPropsType> = (props) => {
+    const getUsers = () => {
+        if (props.usersPage.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    props.setUsers(response.data.items)
+                })
+        }
     }
+
 
     return (
         <div className={s.content}>
-            {pages.map(p => {
-                return (
-                    <span key={p}
-                          className={props.currentPage === p ? s.selectedPage : ''}
-                          onClick={() => props.onPageChanged(p)}>
-                            {p}
-                        </span>
-                )
-            })}
-            {props.users.map((u:any) => {
-                const followHandler = () => props.follow(u.id)
-                const unfollowHandler = () => props.unfollow(u.id)
+            <button onClick={getUsers}>Get Users</button>
+            {props.usersPage.users.map(u => {
+
+                const FollowHandler = () => props.follow(u.id)
+                const UnfollowHandler = () => props.unfollow(u.id)
+
                 return (
                     <div key={u.id}>
                         <span>
@@ -31,8 +31,8 @@ const Users = (props: any) => {
                             </div>
                             <div>
                                 {u.followed
-                                    ? <button onClick={unfollowHandler}>Unfollow</button>
-                                    : <button onClick={followHandler}>Follow</button>
+                                    ? <button onClick={UnfollowHandler}>Unfollow</button>
+                                    : <button onClick={FollowHandler}>Follow</button>
                                 }
                             </div>
                         </span>
@@ -51,6 +51,6 @@ const Users = (props: any) => {
             })}
         </div>
     )
-};
+}
 
-export default Users;
+
