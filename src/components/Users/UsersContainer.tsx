@@ -5,11 +5,11 @@ import {AppStateType} from "../../redux/redux-store";
 import Users from "./Users";
 
 import {
-    followAC,
-    setCurrentPageAC,
-    setTotalUsersCountAC,
-    setUsersAC, toggleIsFetchingAC,
-    unfollowAC,
+    follow,
+    setCurrentPage,
+    setTotalUsersCount,
+    setUsers, toggleIsFetching,
+    unfollow,
     UserType
 } from "../../redux/reducers/usersReducer";
 import axios from "axios";
@@ -22,7 +22,7 @@ export type MapStatePropsType = {
     currentPage: number
     isFetching: boolean
 }
-export type UsersPropsType = MapStatePropsType & mapDispatchPropsType
+export type UsersContainerPropsType = MapStatePropsType & mapDispatchPropsType
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         users: state.usersPage.users,
@@ -33,7 +33,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-type mapDispatchPropsType = {
+export type mapDispatchPropsType = {
     follow: (userId: string) => void
     unfollow: (userId: string) => void
     setUsers: (users: UserType[]) => void
@@ -42,32 +42,7 @@ type mapDispatchPropsType = {
     toggleIsFetching: (isFetching: boolean) => void
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): mapDispatchPropsType => {
-    return {
-        follow: (userId: string) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId: string) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users: UserType[]) => {
-            dispatch(setUsersAC(users))
-        },
-        setTotalUsersCount: (totalCount: number) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
-        setCurrentPage: (pageNumber: number) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        toggleIsFetching: (isFetching: boolean) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
-
-    }
-}
-
-
-class UsersAPIComponent extends React.Component<UsersPropsType> {
+class UsersAPIComponent extends React.Component<UsersContainerPropsType> {
     componentDidMount() {
         this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
@@ -106,5 +81,7 @@ class UsersAPIComponent extends React.Component<UsersPropsType> {
     }
 }
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+export const UsersContainer = connect(mapStateToProps, {
+    follow, unfollow, setUsers, setTotalUsersCount, setCurrentPage, toggleIsFetching
+})(UsersAPIComponent);
 

@@ -1,8 +1,20 @@
 import React from 'react';
 import s from "./users.module.css";
 import userDefault from "../../assets/img/default_avatar.png";
+import {UserType} from "../../redux/reducers/usersReducer";
 
-const Users = (props: any) => {
+
+type UsersPropsType = {
+    users: UserType[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+    follow: (userId: string) => void
+    unfollow: (userId: string) => void
+    onPageChanged: (pageNumber: number) => void
+}
+
+const Users = (props: UsersPropsType) => {
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     const pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -20,7 +32,7 @@ const Users = (props: any) => {
                         </span>
                 )
             })}
-            {props.users.map((u:any) => {
+            {props.users.map((u) => {
                 const followHandler = () => props.follow(u.id)
                 const unfollowHandler = () => props.unfollow(u.id)
                 return (
