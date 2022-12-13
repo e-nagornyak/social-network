@@ -22,7 +22,7 @@ export type UsersStateType = {
 const initialState = {
     users: [],
     pageSize: 3,
-    totalUsersCount: 20,
+    totalUsersCount: 35,
     currentPage: 1,
     isFetching: false
 }

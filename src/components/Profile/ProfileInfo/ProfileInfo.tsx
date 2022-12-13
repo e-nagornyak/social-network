@@ -5,10 +5,11 @@ import {ProfileType} from "../../../redux/reducers/profileReducer";
 import {Preloader} from "../../common/Preloader/Preloader";
 
 type ProfileInfoPropsType = {
-    profile: ProfileType
+    profile: ProfileType | null
 }
 
 export const ProfileInfo = (props: ProfileInfoPropsType) => {
+    debugger
     if (!props.profile) {
         return <Preloader/>
     }
@@ -18,10 +19,15 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
             <div>
                 <img
                     className={s.avatar}
-                    src={(props.profile.photos.large)}
+                    src={(props.profile.photos.large ? props.profile.photos.large : avatar)}
                     alt="avatar"/>
             </div>
-            <div>ava + description</div>
+            <div>
+                <h3>{props.profile.fullName}</h3>
+                <h3>{props.profile.aboutMe}</h3>
+                <h3>{props.profile.lookingForAJob}</h3>
+                <h3>{props.profile.lookingForAJobDescription}</h3>
+            </div>
         </div>
     );
 };
