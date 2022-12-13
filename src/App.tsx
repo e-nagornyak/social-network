@@ -10,13 +10,14 @@ import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import s from './App.module.css';
 import {UsersContainer} from "./components/Users/UsersContainer";
 import {ProfileContainer} from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 export const App = () => {
     //JSX
     return (
         <div className={s.wrapper}>
-            <Header/>
+            <HeaderContainer/>
             <LeftBar/>
             <RightBar/>
             <div className={s.content}>

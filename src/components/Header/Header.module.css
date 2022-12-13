@@ -14,10 +14,9 @@
     display: flex;
 }
 
-.logo img {
+.img_logo {
     width: 50px;
     height: 55px;
-    /*filter: drop-shadow(1px 1px 4px #7a8790);*/
     margin: 0;
 }
 
@@ -26,45 +25,6 @@
     font-size: 25px;
 }
 
-label {
-    display: flex;
+.loginBlock a {
+    color: white;
 }
-
-label img {
-    margin-left: -33px;
-    margin-bottom: 3px;
-}
-
-label input {
-    width: 500px;
-    height: 32px;
-    opacity: 0.7;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 100%);
-    border: none;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-}
-
-.nav a {
-    margin-right: 55px;
-    width: 15px;
-}
-
-.nav span {
-    margin-right: 5px;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    margin-right: 5px;
-}
-
-.icons{
-    width: 20px;
-}
-
