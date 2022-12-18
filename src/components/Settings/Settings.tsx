@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './Settings.module.css'
 
-type SettingsType = {
-
-}
+// type SettingsType = {
+//
+// }
 
 export const Settings = () => {
     return (
