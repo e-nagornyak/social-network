@@ -1,7 +1,7 @@
 import React from 'react';
 import s from '../Dialogs.module.css'
 import {NavLink} from "react-router-dom";
-import avatar from '../../../img/avatar.png'
+import avatar from '../../../assets/img/avatar.png'
 
 
 type DialogItemType = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import avatar from "../../../../img/avatar.png";
+import avatar from "../../../../assets/img/avatar.png";
 import s from './Post.module.css'
 
 type OnePostType = {

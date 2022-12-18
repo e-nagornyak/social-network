@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Header.module.css'
-import avatar from '../../img/avatar.png'
 import {NavLink} from "react-router-dom";
 
 export const Header = (props: any) => {

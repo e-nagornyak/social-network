@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "../RightBar/RightBar.module.css";
-import avatar from "../../../src/img/avatar.png";
+import avatar from "../../assets/img/avatar.png";
 
 export const RightBar = () => {
     // JSX
