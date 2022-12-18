@@ -80,7 +80,7 @@ class UsersAPIComponent extends React.Component<UsersContainerPropsType> {
     }
 }
 
-export const UsersContainer = connect(mapStateToProps, {
+export default connect(mapStateToProps, {
     follow, unfollow, setUsers, setTotalUsersCount, setCurrentPage, toggleIsFetching
 })(UsersAPIComponent);
 
