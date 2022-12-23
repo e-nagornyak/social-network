@@ -5,7 +5,7 @@ import {UserType} from "../../redux/reducers/usersReducer";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
 
-
+//
 type UsersPropsType = {
     users: UserType[]
     pageSize: number
