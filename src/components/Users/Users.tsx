@@ -3,9 +3,8 @@ import s from "./users.module.css";
 import userDefault from "../../assets/img/default_avatar.png";
 import {UserType} from "../../redux/reducers/usersReducer";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 
-//
+
 type UsersPropsType = {
     users: UserType[]
     pageSize: number
@@ -14,7 +13,6 @@ type UsersPropsType = {
     follow: (userId: string) => void
     unfollow: (userId: string) => void
     onPageChanged: (pageNumber: number) => void
-    toggleIfFollowingProgress: (isFetching: boolean, userId: string) => void
     followingProgress: string[]
 }
 
@@ -34,34 +32,11 @@ const Users = (props: UsersPropsType) => {
                             {p}
                        </span>
             })}
+
             {props.users.map((u) => {
 
-                const followHandler = () => {
-                    props.toggleIfFollowingProgress(true, u.id)
-                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                        withCredentials: true,
-                        headers: {"API-KEY": "b5d66a17-e300-438a-836a-f262d6d4bfa6"}
-                    }).then(response => {
-                        if (response.data.resultCode === 0) {
-                            props.follow(u.id)
-                        }
-                        props.toggleIfFollowingProgress(false, u.id)
-                    })
-                }
-
-                const unfollowHandler = () => {
-                    props.toggleIfFollowingProgress(true, u.id)
-                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                        {
-                            withCredentials: true,
-                            headers: {"API-KEY": "b5d66a17-e300-438a-836a-f262d6d4bfa6"}
-                        }).then(response => {
-                        if (response.data.resultCode === 0) {
-                            props.unfollow(u.id)
-                        }
-                        props.toggleIfFollowingProgress(false, u.id)
-                    })
-                }
+                const followHandler = () => props.follow(u.id)
+                const unfollowHandler = () => props.unfollow(u.id)
 
                 return <div key={u.id}>
                         <span>
