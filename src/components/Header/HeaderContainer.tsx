@@ -3,7 +3,7 @@ import {Header} from "./Header";
 import axios from "axios";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {setAuthUserData} from "../../redux/reducers/AuthReducer";
+import {setAuthUserData} from "../../redux/reducers/authReducer";
 
 class HeaderContainer extends React.Component<mapDispatchPropsType, MapStatePropsType> {
     componentDidMount() {
