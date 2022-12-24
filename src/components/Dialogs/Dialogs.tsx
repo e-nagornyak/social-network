@@ -3,13 +3,15 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
+import {Redirect} from "react-router-dom";
 
 
 export const Dialogs: React.FC<DialogsPropsType> = (
     {
         dialogsPage,
         sendMessage,
-        onMessageChange
+        onMessageChange,
+        isAuth
     }) => {
 
     let dialogs = dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
@@ -18,6 +20,8 @@ export const Dialogs: React.FC<DialogsPropsType> = (
     const sendMessageHandler = () => sendMessage()
     const onMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => onMessageChange(e.currentTarget.value)
 
+    // Redirect
+    if (!isAuth) return <Redirect to={"/login"}/>
     // JSX
     return (
         <div className={s.dialogs}>
