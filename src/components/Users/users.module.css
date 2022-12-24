@@ -3,6 +3,9 @@
     padding: 10px;
 }
 
+.paginationItem {
+    margin: 0 2px;
+}
 
 .selectedPage {
     font-weight: bold;
