@@ -4,10 +4,11 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {getAuthUserData} from "../../redux/reducers/authReducer";
 
-class HeaderContainer extends React.Component<mapDispatchPropsType, MapStatePropsType> {
+class HeaderContainer extends React.Component<MapStatePropsType & mapDispatchPropsType, AppStateType> {
     componentDidMount() {
         this.props.getAuthUserData()
     }
+
     render() {
         return <Header {...this.props}/>
     }

@@ -96,7 +96,8 @@ export const getUsers = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch) => {
         dispatch(toggleIsFetching(true))
         dispatch(setCurrentPage(currentPage))
-        usersAPI.getUsers(currentPage, pageSize).then(response => {
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(response => {
             dispatch(toggleIsFetching(false))
             dispatch(setUsers(response.items))
             // dispatch(setTotalUsersCount(response.totalCount))
@@ -116,7 +117,7 @@ export const follow = (userId: string) => {
     }
 }
 export const unfollow = (userId: string) => {
-    return (dispatch: Dispatch) => {
+    return (dispatch: Dispatch <UsersActionsType>) => {
         dispatch(toggleIfFollowingProgress(true, userId))
         usersAPI.unfollow(userId).then(response => {
             if (response.data.resultCode === 0) {

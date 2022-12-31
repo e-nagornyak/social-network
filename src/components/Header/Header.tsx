@@ -2,8 +2,13 @@ import React from 'react';
 import s from './Header.module.css'
 import {NavLink} from "react-router-dom";
 
+type HeaderPropsType={
+    isAuth: boolean
+    login: string | null
+    getAuthUserData: any
+}
 
-export const Header = (props: any) => {
+export const Header = (props: HeaderPropsType) => {
     return (
         <header className={s.header}>
             <div className={s.logo}>

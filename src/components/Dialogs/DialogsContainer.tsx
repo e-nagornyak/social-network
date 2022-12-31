@@ -4,32 +4,26 @@ import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../redux/redux-store";
 
-type MapStatePropsType = {
+export type MapStatePropsType = {
     dialogsPage: DialogsStateType
     isAuth: boolean
 }
-export type DialogsPropsType = MapStatePropsType & mapDispatchPropsType
+
+export type mapDispatchPropsType = {
+    onMessageChange: (text: string) => void
+    sendMessage: () => void
+}
+
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogsPage: state.dialogsPage,
         isAuth: state.auth.isAuth
     }
 }
-
-type mapDispatchPropsType = {
-    onMessageChange: (text: string) => void
-    sendMessage: () => void
-
-}
-
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchPropsType => {
     return {
-        onMessageChange: (text: string) => {
-            dispatch(updateMessageTextAC(text))
-        },
-        sendMessage: () => {
-            dispatch(sendMessageAC())
-        }
+        onMessageChange: (text: string) => dispatch(updateMessageTextAC(text)),
+        sendMessage: () => dispatch(sendMessageAC())
     }
 }
 
