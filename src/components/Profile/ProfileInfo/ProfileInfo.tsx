@@ -3,6 +3,7 @@ import s from "./ProfileInfo.module.css";
 import avatar from "../../../assets/img/avatar.png";
 import {ProfileType} from "../../../redux/reducers/profileReducer";
 import {Preloader} from "../../common/Preloader/Preloader";
+import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 
 type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -20,6 +21,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
                     className={s.avatar}
                     src={(props.profile.photos.large ? props.profile.photos.large : avatar)}
                     alt="avatar"/>
+                <ProfileStatus status={'Hello'}/>
             </div>
             <div>
                 <h3>{props.profile.fullName}</h3>
