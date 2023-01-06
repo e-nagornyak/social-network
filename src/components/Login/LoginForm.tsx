@@ -22,4 +22,4 @@ const LoginForm = (props: InjectedFormProps<FormDataType>) => {
     </form>
 }
 
-export const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
+export const LoginReduxForm = reduxForm<FormDataType>({form: 'login'})(LoginForm)
