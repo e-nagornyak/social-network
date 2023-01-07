@@ -3,7 +3,6 @@ import {v1} from "uuid";
 export type DialogsStateType = {
     messages: MessagesType[]
     dialogs: DialogsType[]
-    newMessageText: string
 }
 type MessagesType = {
     id: string
@@ -30,23 +29,18 @@ const initialState = {
         {id: v1(), name: 'Sonia'},
         {id: v1(), name: 'Ivan'},
         {id: v1(), name: 'Sasha'}
-    ],
-    newMessageText: '',
+    ]
 }
 
-export type DialogsActionType = sendMessageACType | updateMessageTextACType
+export type DialogsActionType = sendMessageACType
 export const dialogsReducer = (state: DialogsStateType = initialState, action: DialogsActionType): DialogsStateType => {
     switch (action.type) {
         case "SEND-MESSAGE": {
-            const newMessage: MessagesType = {id: v1(), message: state.newMessageText}
+            const newMessage: MessagesType = {id: v1(), message: action.payload.text}
             return {
                 ...state,
                 messages: [...state.messages, newMessage],
-                newMessageText: ''
             }
-        }
-        case "UPDATE-NEW-MESSAGE-TEXT": {
-            return {...state, newMessageText: action.newText}
         }
         default: {
             return state
@@ -54,8 +48,6 @@ export const dialogsReducer = (state: DialogsStateType = initialState, action: D
     }
 }
 
-type sendMessageACType = ReturnType<typeof sendMessageAC>
-export const sendMessageAC = () => ({type: "SEND-MESSAGE"}) as const
+type sendMessageACType = ReturnType<typeof sendMessage>
+export const sendMessage = (text: string) => ({type: "SEND-MESSAGE", payload: {text}}) as const
 
-type updateMessageTextACType = ReturnType<typeof updateMessageTextAC>
-export const updateMessageTextAC = (newText: string) => ({type: "UPDATE-NEW-MESSAGE-TEXT", newText}) as const

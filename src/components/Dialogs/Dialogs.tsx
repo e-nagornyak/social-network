@@ -3,20 +3,20 @@ import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {mapDispatchPropsType, MapStatePropsType} from "./DialogsContainer";
+import {addMessageFormDataType, AddMessageReduxForm} from "./AddMessageForm";
 
-export type DialogsPropsType = MapStatePropsType & mapDispatchPropsType
-export const Dialogs: React.FC<DialogsPropsType> = (
+export const Dialogs: React.FC<MapStatePropsType & mapDispatchPropsType> = (
     {
         dialogsPage,
         sendMessage,
-        onMessageChange,
     }) => {
 
     let dialogs = dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
-    let messages = dialogsPage.messages.map(m  => <Message key={m.id} message={m.message}/>)
+    let messages = dialogsPage.messages.map(m => <Message key={m.id} message={m.message}/>)
 
-    const sendMessageHandler = () => sendMessage()
-    const onMessageChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => onMessageChange(e.currentTarget.value)
+    const onSubmit = (text: addMessageFormDataType) => {
+        sendMessage(text.newMessageBody)
+    }
 
     // JSX
     return (
@@ -26,15 +26,10 @@ export const Dialogs: React.FC<DialogsPropsType> = (
             </div>
             <div className={s.messages}>
                 {messages}
-                <div className={s.send_wrapper}>
-                    <textarea
-                        value={dialogsPage.newMessageText}
-                        placeholder={'Enter your message'}
-                        onChange={onMessageChangeHandler}>
-                    </textarea>
-                    <button onClick={sendMessageHandler}>Send</button>
-                </div>
+                <AddMessageReduxForm onSubmit={onSubmit}/>
             </div>
         </div>
     );
 };
+
+

@@ -2,6 +2,7 @@ import React, {ChangeEvent} from 'react';
 import {Post} from "./Post/Post";
 import s from './MyPosts.module.css'
 import {myPostsPropsType} from "./MyPostsContainer";
+import {PostReduxForm} from "./PostForm/PostForm";
 
 
 export const MyPosts: React.FC<myPostsPropsType> = (
@@ -29,6 +30,7 @@ export const MyPosts: React.FC<myPostsPropsType> = (
                         onChange={onPostChangeHandler}
                     />
                 </div>
+                <PostReduxForm/>
                 <div>
                     <button onClick={addPostHandler}>Add post</button>
                 </div>
