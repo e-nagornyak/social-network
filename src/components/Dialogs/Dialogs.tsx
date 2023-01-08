@@ -1,9 +1,9 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
 import {mapDispatchPropsType, MapStatePropsType} from "./DialogsContainer";
-import {addMessageFormDataType, AddMessageReduxForm} from "./AddMessageForm";
+import {newMessageFormData, AddMessageReduxForm} from "./AddMessageForm";
 
 export const Dialogs: React.FC<MapStatePropsType & mapDispatchPropsType> = (
     {
@@ -14,7 +14,7 @@ export const Dialogs: React.FC<MapStatePropsType & mapDispatchPropsType> = (
     let dialogs = dialogsPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
     let messages = dialogsPage.messages.map(m => <Message key={m.id} message={m.message}/>)
 
-    const onSubmit = (text: addMessageFormDataType) => {
+    const addMessage = (text: newMessageFormData) => {
         sendMessage(text.newMessageBody)
     }
 
@@ -26,7 +26,7 @@ export const Dialogs: React.FC<MapStatePropsType & mapDispatchPropsType> = (
             </div>
             <div className={s.messages}>
                 {messages}
-                <AddMessageReduxForm onSubmit={onSubmit}/>
+                <AddMessageReduxForm onSubmit={addMessage}/>
             </div>
         </div>
     );

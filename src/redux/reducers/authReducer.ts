@@ -26,11 +26,16 @@ export const authReducer = (state: authInitialStateType = initialState, action: 
     }
 }
 
+// TYPE FOR AC
 type setAuthUserDataType = ReturnType<typeof setAuthUserData>
+
+// AC
 export const setAuthUserData = (userId: number, email: string, login: string) => ({
     type: "SET-USER-DATA",
     payload: {userId, email, login}
 }) as const
+
+// THANKS
 export const getAuthUserData = () => {
     return (dispatch: Dispatch) => {
         authAPI.me().then(response => {

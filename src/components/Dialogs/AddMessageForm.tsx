@@ -2,11 +2,11 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import s from "./Dialogs.module.css";
 import React from "react";
 
-export type addMessageFormDataType = {
+export type newMessageFormData = {
     newMessageBody: string
 }
 
-const AddMessageForm = (props: InjectedFormProps<addMessageFormDataType>) => {
+const AddMessageForm = (props: InjectedFormProps<newMessageFormData>) => {
     return (
         <form className={s.send_wrapper} onSubmit={props.handleSubmit}>
             <Field
@@ -20,4 +20,4 @@ const AddMessageForm = (props: InjectedFormProps<addMessageFormDataType>) => {
     );
 };
 
-export const AddMessageReduxForm = reduxForm<addMessageFormDataType>({form: 'dialogAddMessage'})(AddMessageForm)
+export const AddMessageReduxForm = reduxForm<newMessageFormData>({form: 'dialogAddMessage'})(AddMessageForm)

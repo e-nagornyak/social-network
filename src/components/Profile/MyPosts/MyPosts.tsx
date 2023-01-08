@@ -1,39 +1,29 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import {Post} from "./Post/Post";
 import s from './MyPosts.module.css'
-import {myPostsPropsType} from "./MyPostsContainer";
-import {PostReduxForm} from "./PostForm/PostForm";
+import {mapDispatchPropsType, MapStatePropsType} from "./MyPostsContainer";
+import {AddNewPostReduxForm, newPostFormData} from "./PostForm/AddNewPostForm";
 
+export type myPostsPropsType = MapStatePropsType & mapDispatchPropsType
 
 export const MyPosts: React.FC<myPostsPropsType> = (
     {
         posts,
-        newPostText,
-        updateNewPostText,
         addPost
     }) => {
+
     // Map postsElements
     let postsElements = posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
 
-    //Callback
-    const addPostHandler = () => addPost()
-    const onPostChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => updateNewPostText(e.currentTarget.value)
+    // CALLBACK
+    const addPostHandler = (text: newPostFormData) => addPost(text.newPostText)
 
     // JSX
     return (
         <div>
             <h1>my post</h1>
             <div>
-                <div>
-                    <textarea
-                        value={newPostText}
-                        onChange={onPostChangeHandler}
-                    />
-                </div>
-                <PostReduxForm/>
-                <div>
-                    <button onClick={addPostHandler}>Add post</button>
-                </div>
+                <AddNewPostReduxForm onSubmit={addPostHandler}/>
             </div>
             <div className={s.posts}>
                 {postsElements}

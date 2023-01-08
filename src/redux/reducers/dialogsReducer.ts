@@ -47,7 +47,9 @@ export const dialogsReducer = (state: DialogsStateType = initialState, action: D
         }
     }
 }
-
+// TYPE FOR AC
 type sendMessageACType = ReturnType<typeof sendMessage>
+
+// AC
 export const sendMessage = (text: string) => ({type: "SEND-MESSAGE", payload: {text}}) as const
 
