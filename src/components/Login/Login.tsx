@@ -1,6 +1,6 @@
 import React from 'react';
 import {LoginFormDataType, LoginReduxForm} from "./LoginForm";
-
+import s from './Login.module.css'
 export const Login = () => {
 
     const onSubmit = (formData: LoginFormDataType) => {
@@ -8,7 +8,7 @@ export const Login = () => {
     }
 
     return (
-        <div>
+        <div className={s.wrapper}>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit}/>
         </div>

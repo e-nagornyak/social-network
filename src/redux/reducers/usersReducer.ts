@@ -32,8 +32,8 @@ export type UsersStateType = {
 }
 const initialState = {
     users: [],
-    pageSize: 3,
-    totalUsersCount: 35,
+    pageSize: 5,
+    totalUsersCount: 100,
     currentPage: 1,
     isFetching: false,
     followingInProgress: []

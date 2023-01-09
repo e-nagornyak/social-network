@@ -2,6 +2,7 @@ import React from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
+import s from './Login.module.css'
 
 export type LoginFormDataType = {
     login: string
@@ -17,8 +18,9 @@ const LoginForm = (props: InjectedFormProps<LoginFormDataType>) => {
         <div>
             <Field validate={[required]} name={'password'} placeholder={'password'} component={Input}/>
         </div>
-        <div>
-            <Field name={'rememberMe'} type='checkbox' component={Input}/> remember me
+        <div className={s.rememberMe}>
+            <Field name={'rememberMe'} type='checkbox' component={Input}/>
+            <span>remember me</span>
         </div>
         <button>Login</button>
     </form>
