@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../../api/api";
+import {AppDispatch, AppThunk} from "../redux-store";
 
 type authInitialStateType = {
     userId: number | null
@@ -35,14 +36,28 @@ export const setAuthUserData = (userId: number, email: string, login: string) =>
     payload: {userId, email, login}
 }) as const
 
-// THANKS
-export const getAuthUserData = () => {
-    return (dispatch: Dispatch) => {
-        authAPI.me().then(response => {
+// THUNKS
+export const getAuthUserData = (): AppThunk => (dispatch: AppDispatch) => {
+    authAPI.me().then(response => {
+        if (response.data.resultCode === 0) {
+            let {id, login, email} = response.data.data
+            dispatch(setAuthUserData(id, email, login))
+        }
+    })
+}
+
+export const login = (email: string, password: string, rememberMe: boolean): AppThunk => (dispatch: AppDispatch) => {
+    authAPI.login(email, password, rememberMe)
+        .then(response => {
             if (response.data.resultCode === 0) {
-                let {id, login, email} = response.data.data
-               dispatch(setAuthUserData(id, email, login))
+                dispatch(getAuthUserData())
             }
         })
-    }
+}
+
+export const logout = (): AppThunk => (dispatch: AppDispatch) => {
+    authAPI.logout()
+        .then(response => {
+
+        })
 }

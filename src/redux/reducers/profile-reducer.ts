@@ -74,7 +74,7 @@ export const setUserProfile = (profile: ProfileType) => ({type: "SET-USER-PROFIL
 export const addPost = (text: string) => ({type: "ADD-POST", payload: {text}}) as const
 export const setStatus = (status: string) => ({type: "SET-STATUS", payload: {status}}) as const
 
-// THANK
+// THUNKS
 export const getUserProfile = (userId: string) => {
     return (dispatch: Dispatch) => {
         usersAPI.getProfile(userId).then(response => {

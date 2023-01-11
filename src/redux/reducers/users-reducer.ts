@@ -93,7 +93,7 @@ export const toggleIfFollowingProgress = (isFetching: boolean, userId: string) =
     payload: {isFetching, userId}
 }) as const
 
-// THANK
+// THUNKS
 export const getUsers = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch) => {
         dispatch(toggleIsFetching(true))
