@@ -4,7 +4,7 @@ import {AppStateType} from "../../redux/redux-store";
 import Users from "./Users";
 import {
     follow, getUsers, setCurrentPage, toggleIfFollowingProgress, unfollow, UserType
-} from "../../redux/reducers/usersReducer";
+} from "../../redux/reducers/users-reducer";
 import {Preloader} from "../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";

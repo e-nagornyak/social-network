@@ -5,7 +5,7 @@ import {required} from "../../utils/validators/validators";
 import s from './Login.module.css'
 
 export type LoginFormDataType = {
-    login: string
+    email: string
     password: string
     rememberMe: boolean
 }
@@ -13,10 +13,10 @@ export type LoginFormDataType = {
 const LoginForm = (props: InjectedFormProps<LoginFormDataType>) => {
     return <form onSubmit={props.handleSubmit}>
         <div>
-            <Field validate={[required]} name={'login'} placeholder={'login'} component={Input}/>
+            <Field validate={[required]} name={'email'} placeholder={'login'} component={Input}/>
         </div>
         <div>
-            <Field validate={[required]} name={'password'} placeholder={'password'} component={Input}/>
+            <Field validate={[required]} type={'password'} name={'password'} placeholder={'password'} component={Input}/>
         </div>
         <div className={s.rememberMe}>
             <Field name={'rememberMe'} type='checkbox' component={Input}/>

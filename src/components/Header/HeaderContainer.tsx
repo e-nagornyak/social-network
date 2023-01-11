@@ -2,7 +2,7 @@ import React from 'react';
 import {Header} from "./Header";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {getAuthUserData} from "../../redux/reducers/authReducer";
+import {getAuthUserData} from "../../redux/reducers/auth-reducer";
 import {compose} from "redux";
 
 class HeaderContainer extends React.Component<MapStatePropsType & mapDispatchPropsType, AppStateType> {

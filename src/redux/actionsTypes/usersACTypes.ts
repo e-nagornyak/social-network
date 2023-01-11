@@ -5,7 +5,7 @@ import {
     setUsers, toggleIfFollowingProgress,
     toggleIsFetching,
     unfollowSuccess
-} from "../reducers/usersReducer";
+} from "../reducers/users-reducer";
 
 export type followType = ReturnType<typeof followSuccess>
 export type unfollowType = ReturnType<typeof unfollowSuccess>

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./users.module.css";
 import userDefault from "../../assets/img/default_avatar.png";
-import {UserType} from "../../redux/reducers/usersReducer";
+import {UserType} from "../../redux/reducers/users-reducer";
 import {NavLink} from "react-router-dom";
 
 
