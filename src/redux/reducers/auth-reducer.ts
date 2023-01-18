@@ -37,14 +37,11 @@ export const setAuthUserData = (userId: string | null, email: string | null, log
 }) as const
 
 // THUNKS
-export const getAuthUserData = (): AppThunk => (dispatch: AppDispatch) => {
-    authAPI.me().then(response => {
+export const getAuthUserData = () => (dispatch: AppDispatch) => {
+    return authAPI.me().then(response => {
             if (response.data.resultCode === 0) {
                 let {id, login, email} = response.data.data
                 dispatch(setAuthUserData(id, email, login, true))
-            } else {
-                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
-                dispatch(stopSubmit('login', {_error: message}))
             }
         }
     )

@@ -5,9 +5,11 @@ import {usersReducer} from "./reducers/users-reducer";
 import {authReducer} from "./reducers/auth-reducer";
 import thunkMiddleware, {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {reducer as formReducer} from 'redux-form'
+import {appReducer} from "./reducers/app-reducer";
 
 
 export const rootReducer = combineReducers({
+    app: appReducer,
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
