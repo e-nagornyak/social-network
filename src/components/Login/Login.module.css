@@ -7,8 +7,21 @@
 
 .rememberMe {
     display: flex;
+    padding: 10px 0;
 }
 
 .rememberMe input {
     margin: 3px 5px 0 0;
+}
+
+.btn_login {
+    padding: 5px 70px;
+}
+
+.formSummaryError {
+    width: 165px;
+    border: 1px solid red;
+    padding: 5px;
+    color: red;
+    margin: 5px 0 20px 0;
 }

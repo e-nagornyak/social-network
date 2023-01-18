@@ -16,13 +16,19 @@ const LoginForm = (props: InjectedFormProps<LoginFormDataType>) => {
             <Field validate={[required]} name={'email'} placeholder={'login'} component={Input}/>
         </div>
         <div>
-            <Field validate={[required]} type={'password'} name={'password'} placeholder={'password'} component={Input}/>
+            <Field validate={[required]} type={'password'} name={'password'} placeholder={'password'}
+                   component={Input}/>
         </div>
         <div className={s.rememberMe}>
             <Field name={'rememberMe'} type='checkbox' component={Input}/>
             <span>remember me</span>
         </div>
-        <button>Login</button>
+        {props.error &&
+            <div className={s.formSummaryError}>
+                {props.error}
+            </div>
+        }
+        <button className={s.btn_login}>Login</button>
     </form>
 }
 
