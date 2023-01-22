@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 // import s from "./ProfileStatus.module.css";
 
 type ProfileStatusPropsType = {
@@ -13,6 +13,7 @@ type stateType = {
 export const ProfileStatusWithHooks: React.FC<ProfileStatusPropsType> = (props) => {
     const [editMode, setEditMode] = useState(false)
     const [status, setStatus] = useState(props.status)
+    const [error, setError] = useState(false)
 
     const activateEditMode = () => setEditMode(true)
 
@@ -22,14 +23,17 @@ export const ProfileStatusWithHooks: React.FC<ProfileStatusPropsType> = (props) 
     }
 
     const deactivateEditMode = () => {
-        setEditMode(false)
-        props.updateUserStatus(status)
+        if (status.trim() !== '') {
+            setEditMode(false)
+            props.updateUserStatus(status)
+            setError(false)
+        } else {
+            setError(true)
+        }
     }
-    // componentDidUpdate(prevProps: ProfileStatusPropsType, prevState: stateType) {
-    //     if (prevProps.status !== this.props.status){
-    //         this.setState({status: this.props.status})
-    //     }
-    // }
+    useEffect(() => {
+            setStatus(props.status)
+    }, [props.status])
 
     return (
         <div>
@@ -40,7 +44,9 @@ export const ProfileStatusWithHooks: React.FC<ProfileStatusPropsType> = (props) 
             }
             {editMode &&
                 <div>
-                    <input autoFocus onChange={onStatusChange} onBlur={deactivateEditMode}
+                    <input style={{border: error ? "3px solid red" : ''}}
+                           autoFocus onChange={onStatusChange}
+                           onBlur={deactivateEditMode}
                            value={status}/>
                 </div>
             }
