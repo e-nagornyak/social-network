@@ -9,11 +9,11 @@ import {Preloader} from "../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {
-    getCurrentPage, getFollowingProgress,
-    getIsFetching,
-    getPageSize,
+    getCurrentPage,
+    getFollowingProgress,
+    getIsFetching, getPageSize,
     getTotalUsersCount,
-    getUsersTest
+    getUsersSuperSelector
 } from "../../redux/selectors/user-selectors";
 
 export type MapStatePropsType = {
@@ -37,7 +37,7 @@ export type MapStatePropsType = {
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        users: getUsersTest(state),
+        users: getUsersSuperSelector(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
