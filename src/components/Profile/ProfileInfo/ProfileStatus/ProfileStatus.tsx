@@ -6,7 +6,8 @@ type ProfileStatusPropsType = {
     updateUserStatus: (status: string) => void
 }
 type stateType = {
-    editMode: false, status: string
+    editMode: false,
+     status: string
 }
 
 export class ProfileStatus extends React.Component<ProfileStatusPropsType> {

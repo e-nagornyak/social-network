@@ -4,6 +4,7 @@ import avatar from "../../../assets/img/avatar.png";
 import {ProfileType} from "../../../redux/reducers/profile-reducer";
 import {Preloader} from "../../common/Preloader/Preloader";
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
+import {ProfileStatusWithHooks} from "./ProfileStatus/ProfileStatusWithHooks";
 
 type ProfileInfoPropsType = {
     profile: ProfileType | null
@@ -23,7 +24,8 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
                     className={s.avatar}
                     src={(props.profile.photos.large ? props.profile.photos.large : avatar)}
                     alt="avatar"/>
-                <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
+                <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+                {/*<ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>*/}
             </div>
             <div>
                 <h3>{props.profile.fullName}</h3>
